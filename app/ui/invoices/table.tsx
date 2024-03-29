@@ -1,17 +1,17 @@
-import Image from 'next/image';
-import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
-import InvoiceStatus from '@/app/ui/invoices/status';
-import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { fetchFilteredInvoices } from '@/app/lib/data';
+import Image from 'next/image'
+import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons'
+import InvoiceStatus from '@/app/ui/invoices/status'
+import { formatDateToLocal, formatCurrency } from '@/app/lib/utils'
+import { fetchFilteredInvoices } from '@/app/lib/data'
 
 export default async function InvoicesTable({
   query,
   currentPage,
 }: {
-  query: string;
-  currentPage: number;
+  query: string
+  currentPage: number
 }) {
-  const invoices = await fetchFilteredInvoices(query, currentPage);
+  const invoices = await fetchFilteredInvoices(query, currentPage)
 
   return (
     <div className="mt-6 flow-root">
@@ -83,7 +83,7 @@ export default async function InvoicesTable({
                   key={invoice.id}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
-                  <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                  <td className="py-3 pl-6 pr-3">
                     <div className="flex items-center gap-3">
                       <Image
                         src={invoice.image_url}
@@ -120,5 +120,5 @@ export default async function InvoicesTable({
         </div>
       </div>
     </div>
-  );
+  )
 }
